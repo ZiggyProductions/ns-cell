@@ -1,0 +1,22 @@
+{
+  "name": "@netshards/ns-cell",
+  "version": "1.0.0",
+  "description": "NetShards Cell service",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZiggyProductions/ns-cell.git"
+  },
+  "keywords": [
+    "netshards"
+  ],
+  "author": "Gevorg Aznauryan aka GAZ <gazilius@gmail.com> (http://ziggy.productions/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ZiggyProductions/ns-cell/issues"
+  },
+  "homepage": "https://github.com/ZiggyProductions/ns-cell#readme"
+}
