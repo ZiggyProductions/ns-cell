@@ -2,10 +2,22 @@
  * Created by GAZ on 6/28/17.
  */
 require('dotenv').config({path: __dirname+'/.env'});
+var _ = require('underscore');
 var pj = require('./package.json');
 var os = require('os');
 const DeepstreamServer = require('deepstream.io')
 const C = DeepstreamServer.constants
+
+var net = os.networkInterfaces();
+var filtered;
+_.each(net,function(ifaces){
+    _.each(ifaces,function (iface) {
+        if(iface.internal == false && iface.family == 'IPv4')
+            filtered = iface.address;
+    })
+})
+
+console.log(filtered);
 var options = {
     endpoint: process.env.NS_MONITOR_ENDPOINT,
     namespace: process.env.NS_MONITOR_NAMESPACE,
@@ -16,7 +28,7 @@ var options = {
             hostname: os.hostname(),
             pid: process.pid
         },
-        ds:{port:0}
+        ds:{port:0, ip:filtered}
 
     }
 };
@@ -43,7 +55,7 @@ client.emit('req-port', options.meta.os, (data) => {
         })
         try{
             DSServer.start();
-            options.meta.ds = {port:data.port}
+            options.meta.ds = {port:data.port, ip:filtered}
             client.emit('meta', options.meta, (data) => {});
         }catch(err){
             console.error(err);
