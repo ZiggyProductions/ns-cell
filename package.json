@@ -29,6 +29,8 @@
   },
   "dependencies": {
     "@netshards/ns-monitor": "^1.0.3",
+    "deepstream.io": "^2.3.6",
+    "deepstream.io-msg-redis": "^1.0.4",
     "dotenv": "^4.0.0"
   }
 }
